@@ -1,4 +1,5 @@
 Note: 
+* The final tidy data set contains 79 mean values, each representing the average of a variable based on the combination of each "Subject" and "Activity"
 * refer to the "features_info.txt" from the input data for feature name definitions
 * refer to the "activity_labels.txt" from the input data for Activity values description
 * refer to the "subject_train.txt" and "subject_test.txt" from the input data for Subject values
