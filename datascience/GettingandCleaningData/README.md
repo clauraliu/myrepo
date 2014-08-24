@@ -1,5 +1,6 @@
 The task is broken down into below steps:
 
+
 1. Read the data into R
 
 Assume the input data are under working directory.
@@ -17,6 +18,7 @@ Assume the input data are under working directory.
 >subject_test<-read.table("UCI HAR Dataset/test/subject_test.txt")
 
 >features<-read.table("UCI HAR Dataset/features.txt")
+
 
 2. Merge the data
 
@@ -38,6 +40,7 @@ Assume the input data are under working directory.
 
 Column 2 of "features" contains the feature names
 
+
 3. Replace Activity id with descriptive Activity name
 
 >activity_labels<-read.table("UCI HAR Dataset/activity_labels.txt")
@@ -46,11 +49,13 @@ Column 2 of "features" contains the feature names
 
 Column 2 of "activity_labels" contains the activity names
 
+
 4. Generage the subset that contains only mean and standard deviation columns, keep the last two columns: Subject and Activity
 
 >len<-length(data)
 
 >subdata<-subset(data,select=c(grep("mean|std",as.vector(features$V2)),len-1,len))
+
 
 5. Improve the variable labels
 
@@ -70,6 +75,7 @@ Column 2 of "activity_labels" contains the activity names
 
 >colnames(subdata)<-gsub("\\(|\\)","BR",colnames(subdata))
 
+
 6. Use reshape2 package to get the mean of each variable based on each Subject and Actitity combination
 
 >library(reshape2)
@@ -77,6 +83,7 @@ Column 2 of "activity_labels" contains the activity names
 >meltdata<-melt(subdata,id=c("Subject","Activity"),measure.vars=c(1:79)) #measure variables are all the features columns
 
 >average<-dcast(meltdata,Subject+Activity ~variable,mean) #get the mean based on each Subject and Activity combination
+
 
 7. Write output to a file
 
