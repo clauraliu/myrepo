@@ -1,7 +1,7 @@
 The task is broken down into below steps:
 
 
-1. Read the data into R
+1.Read the data into R
 
 Assume the input data are under working directory.
 
@@ -20,7 +20,7 @@ Assume the input data are under working directory.
 >features<-read.table("UCI HAR Dataset/features.txt")
 
 
-2. Merge the data
+2.Merge the data
 
 (1) Merge the training data with the test data
 
