@@ -41,7 +41,7 @@ Assume the input data are under working directory.
 Column 2 of "features" contains the feature names
 
 
-3. Replace Activity id with descriptive Activity name
+3.Replace Activity id with descriptive Activity name
 
 >activity_labels<-read.table("UCI HAR Dataset/activity_labels.txt")
 
@@ -50,14 +50,14 @@ Column 2 of "features" contains the feature names
 Column 2 of "activity_labels" contains the activity names
 
 
-4. Generage the subset that contains only mean and standard deviation columns, keep the last two columns: Subject and Activity
+4.Generage the subset that contains only mean and standard deviation columns, keep the last two columns: Subject and Activity
 
 >len<-length(data)
 
 >subdata<-subset(data,select=c(grep("mean|std",as.vector(features$V2)),len-1,len))
 
 
-5. Improve the variable labels
+5.Improve the variable labels
 
 (1) replace "-" with "_"
 
@@ -76,7 +76,7 @@ Column 2 of "activity_labels" contains the activity names
 >colnames(subdata)<-gsub("\\(|\\)","BR",colnames(subdata))
 
 
-6. Use reshape2 package to get the mean of each variable based on each Subject and Actitity combination
+6.Use reshape2 package to get the mean of each variable based on each Subject and Actitity combination
 
 >library(reshape2)
 
@@ -85,7 +85,7 @@ Column 2 of "activity_labels" contains the activity names
 >average<-dcast(meltdata,Subject+Activity ~variable,mean) #get the mean based on each Subject and Activity combination
 
 
-7. Write output to a file
+7.Write output to a file
 
 >write.table(average,"./tidy.txt", row.names=FALSE)
 
