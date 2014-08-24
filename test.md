@@ -8,8 +8,8 @@ test
 
 >fff
 
-1.j
+1. j
 
-2.j
+2. j
 
-3.jj
+3. j j
